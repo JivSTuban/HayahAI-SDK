@@ -453,9 +453,29 @@ function TripSearchWidget({ chatApiUrl = "/api/chat-booking", routesApiUrl = "/a
     const formatPrice = (price) => new Intl.NumberFormat(locale, { style: "currency", currency, minimumFractionDigits: 0 }).format(price);
     // ── Styles ──────────────────────────────────────────────────────────────
     const s = buildStyles(t);
-    return ((0, jsx_runtime_1.jsxs)("div", { className: className, style: { ...s.container, fontFamily: t.fontFamily }, children: [(0, jsx_runtime_1.jsxs)("div", { style: s.header, children: [(0, jsx_runtime_1.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: 8 }, children: [(0, jsx_runtime_1.jsx)("div", { style: s.headerIcon, children: (0, jsx_runtime_1.jsx)(icons_1.IconSparkles, { size: 16, color: t.colors.headerSubtext }) }), (0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsx)("div", { style: { fontSize: t.fontSize?.base, fontWeight: 700, color: t.colors.headerText }, children: "Where Do You Want to Go?" }), (0, jsx_runtime_1.jsxs)("div", { style: { fontSize: "10px", color: t.colors.headerSubtext }, children: ["Chat with ", displayName, " to find your trip"] })] })] }), showFormToggle && onSwitchToForm && ((0, jsx_runtime_1.jsxs)("button", { onClick: onSwitchToForm, style: s.formToggle, children: [(0, jsx_runtime_1.jsx)(icons_1.IconFormInput, { size: 14, color: "#fff" }), " ", (0, jsx_runtime_1.jsx)("span", { children: "Form" })] }))] }), (0, jsx_runtime_1.jsx)("div", { ref: scrollRef, style: s.messagesArea, children: (0, jsx_runtime_1.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: 12 }, children: [messages.map((msg) => ((0, jsx_runtime_1.jsxs)("div", { style: { animation: "hayahai-fadeIn .2s ease" }, children: [(0, jsx_runtime_1.jsxs)("div", { style: { ...(msg.role === "user" ? s.userBubble : s.botBubble) }, children: [msg.role === "assistant" && ((0, jsx_runtime_1.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: 4, fontSize: "10px", color: t.colors.primary, fontWeight: 600, marginBottom: 2 }, children: [(0, jsx_runtime_1.jsx)(icons_1.IconBot, { size: 12, color: t.colors.primary }), " ", displayName] })), (0, jsx_runtime_1.jsx)("div", { style: { whiteSpace: "pre-wrap", lineHeight: 1.5 }, children: msg.content.split(/(\*\*.*?\*\*)/).map((part, i) => part.startsWith("**") && part.endsWith("**")
-                                                ? (0, jsx_runtime_1.jsx)("strong", { children: part.slice(2, -2) }, i)
-                                                : part) })] }), msg.tripResults && msg.tripResults.length > 0 && ((0, jsx_runtime_1.jsx)("div", { style: { marginTop: 8, display: "flex", flexDirection: "column", gap: 8, maxHeight: 300, overflowY: "auto" }, children: msg.tripResults.map((trip, i) => ((0, jsx_runtime_1.jsxs)("div", { style: s.tripCard, children: [(0, jsx_runtime_1.jsxs)("div", { style: s.tripCardHeader, children: [(0, jsx_runtime_1.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: 8, color: "#fff" }, children: [(0, jsx_runtime_1.jsx)(icons_1.IconShip, { size: 16, color: "#fff" }), (0, jsx_runtime_1.jsx)("span", { style: { fontWeight: 600, fontSize: t.fontSize?.xs }, children: trip.shippingLine })] }), (0, jsx_runtime_1.jsx)("span", { style: { color: "rgba(255,255,255,0.8)", fontSize: "10px" }, children: trip.vesselName })] }), (0, jsx_runtime_1.jsxs)("div", { style: { padding: 12 }, children: [(0, jsx_runtime_1.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }, children: [(0, jsx_runtime_1.jsxs)("div", { style: { textAlign: "center" }, children: [(0, jsx_runtime_1.jsx)("div", { style: { fontSize: t.fontSize?.lg, fontWeight: 700, color: t.colors.botBubbleText }, children: formatTime(trip.departureTime) }), (0, jsx_runtime_1.jsx)("div", { style: { fontSize: "10px", color: t.colors.mutedText }, children: trip.srcPort })] }), (0, jsx_runtime_1.jsxs)("div", { style: { flex: 1, margin: "0 12px", display: "flex", flexDirection: "column", alignItems: "center" }, children: [(0, jsx_runtime_1.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: 4, fontSize: "10px", color: t.colors.mutedText }, children: [(0, jsx_runtime_1.jsx)(icons_1.IconClock, { size: 12 }), " ", trip.duration] }), (0, jsx_runtime_1.jsxs)("div", { style: { width: "100%", display: "flex", alignItems: "center", gap: 4, marginTop: 4 }, children: [(0, jsx_runtime_1.jsx)("div", { style: { flex: 1, height: 2, background: t.colors.border, borderRadius: 1 } }), (0, jsx_runtime_1.jsx)(icons_1.IconArrowRight, { size: 12, color: t.colors.primary }), (0, jsx_runtime_1.jsx)("div", { style: { flex: 1, height: 2, background: t.colors.border, borderRadius: 1 } })] })] }), (0, jsx_runtime_1.jsxs)("div", { style: { textAlign: "center" }, children: [(0, jsx_runtime_1.jsx)("div", { style: { fontSize: t.fontSize?.lg, fontWeight: 700, color: t.colors.botBubbleText }, children: formatTime(trip.arrivalTime) }), (0, jsx_runtime_1.jsx)("div", { style: { fontSize: "10px", color: t.colors.mutedText }, children: trip.destPort })] })] }), (0, jsx_runtime_1.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: 8, borderTop: `1px solid ${t.colors.border}` }, children: [(0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsx)("div", { style: { fontSize: "18px", fontWeight: 700, color: t.colors.primary }, children: formatPrice(trip.price) }), (0, jsx_runtime_1.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: 4, fontSize: "10px", color: t.colors.mutedText }, children: [(0, jsx_runtime_1.jsx)(icons_1.IconUsers, { size: 12 }), " ", trip.availableSeats, " seats left"] })] }), (0, jsx_runtime_1.jsx)("button", { onClick: () => onTripSelect?.(trip), style: s.chooseTripBtn, children: "Choose Trip" })] })] })] }, trip.id || i))) })), msg.interactive?.type === "quick_reply" && ((0, jsx_runtime_1.jsx)("div", { style: { marginTop: 8, display: "flex", flexWrap: "wrap", gap: 8 }, children: msg.interactive.data.options.map((opt) => ((0, jsx_runtime_1.jsx)("button", { onClick: () => handleQuickReply(opt.value, opt.label), style: s.quickReply, children: opt.label }, opt.value))) }))] }, msg.id))), (isLoading || isSearching) && ((0, jsx_runtime_1.jsxs)("div", { style: { ...s.botBubble, display: "flex", alignItems: "center", gap: 6 }, children: [(0, jsx_runtime_1.jsx)(icons_1.IconLoader, { size: 14, color: t.colors.primary }), (0, jsx_runtime_1.jsx)("span", { style: { fontSize: t.fontSize?.xs, color: t.colors.mutedText }, children: isSearching ? "Searching trips..." : `${displayName} is thinking...` })] }))] }) }), showDatePicker && ((0, jsx_runtime_1.jsx)(DatePickerInline, { theme: t, onSelect: handleDateSelect, onClose: () => setShowDatePicker(false) })), (0, jsx_runtime_1.jsxs)("div", { style: s.inputArea, children: [(0, jsx_runtime_1.jsxs)("form", { onSubmit: handleSubmit, style: s.inputForm, children: [(0, jsx_runtime_1.jsx)("input", { ref: inputRef, value: input, onChange: (e) => setInput(e.target.value), placeholder: "Where do you want to go?", style: s.input, disabled: isLoading || isSearching }), (0, jsx_runtime_1.jsx)("button", { type: "submit", disabled: isLoading || isSearching || !input.trim(), style: { ...s.sendBtn, opacity: isLoading || isSearching || !input.trim() ? 0.5 : 1 }, children: (0, jsx_runtime_1.jsx)(icons_1.IconSend, { size: 14, color: "#fff" }) })] }), poweredByText && ((0, jsx_runtime_1.jsxs)("div", { style: s.poweredBy, children: [(0, jsx_runtime_1.jsx)(icons_1.IconSparkles, { size: 10 }), " ", (0, jsx_runtime_1.jsx)("span", { children: poweredByText })] }))] })] }));
+    // Determine if quick replies are port-selection (many items → use grid)
+    const isPortGrid = (opts) => opts.length > 6 && opts.every((o) => o.value.startsWith("origin:") || o.value.startsWith("dest:"));
+    const renderContent = (text) => text.split(/(\*\*.*?\*\*)/).map((part, i) => part.startsWith("**") && part.endsWith("**")
+        ? (0, jsx_runtime_1.jsx)("strong", { children: part.slice(2, -2) }, i)
+        : part);
+    return ((0, jsx_runtime_1.jsxs)("div", { className: className, style: { ...s.container, fontFamily: t.fontFamily }, children: [(0, jsx_runtime_1.jsxs)("div", { style: s.header, children: [(0, jsx_runtime_1.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: 10 }, children: [(0, jsx_runtime_1.jsx)("div", { style: s.headerIcon, children: (0, jsx_runtime_1.jsx)(icons_1.IconSparkles, { size: 18, color: "#fff" }) }), (0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsx)("div", { style: { fontSize: t.fontSize?.base, fontWeight: 700, color: t.colors.headerText, letterSpacing: "-0.01em" }, children: "Where Do You Want to Go?" }), (0, jsx_runtime_1.jsxs)("div", { style: { fontSize: "11px", color: t.colors.headerSubtext, opacity: 0.85 }, children: ["Chat with ", displayName, " to find your trip"] })] })] }), showFormToggle && onSwitchToForm && ((0, jsx_runtime_1.jsxs)("button", { onClick: onSwitchToForm, style: s.formToggle, children: [(0, jsx_runtime_1.jsx)(icons_1.IconFormInput, { size: 14, color: "#fff" }), " ", (0, jsx_runtime_1.jsx)("span", { children: "Form" })] }))] }), (0, jsx_runtime_1.jsx)("div", { ref: scrollRef, style: s.messagesArea, children: (0, jsx_runtime_1.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: 16 }, children: [messages.map((msg) => ((0, jsx_runtime_1.jsx)("div", { style: { animation: "hayahai-fadeIn .25s ease" }, children: msg.role === "user" ? (
+                            /* ── User bubble ── */
+                            (0, jsx_runtime_1.jsx)("div", { style: { display: "flex", justifyContent: "flex-end" }, children: (0, jsx_runtime_1.jsx)("div", { style: s.userBubble, children: (0, jsx_runtime_1.jsx)("div", { style: { whiteSpace: "pre-wrap", lineHeight: 1.5 }, children: renderContent(msg.content) }) }) })) : (
+                            /* ── Bot bubble with avatar ── */
+                            (0, jsx_runtime_1.jsxs)("div", { style: { display: "flex", gap: 8, alignItems: "flex-start" }, children: [(0, jsx_runtime_1.jsx)("div", { style: s.botAvatar, children: (0, jsx_runtime_1.jsx)(icons_1.IconBot, { size: 14, color: t.colors.primary }) }), (0, jsx_runtime_1.jsxs)("div", { style: { flex: 1, minWidth: 0 }, children: [(0, jsx_runtime_1.jsx)("div", { style: { fontSize: "10px", color: t.colors.primary, fontWeight: 600, marginBottom: 4, letterSpacing: "0.02em" }, children: displayName }), (0, jsx_runtime_1.jsx)("div", { style: s.botBubble, children: (0, jsx_runtime_1.jsx)("div", { style: { whiteSpace: "pre-wrap", lineHeight: 1.6 }, children: renderContent(msg.content) }) }), msg.tripResults && msg.tripResults.length > 0 && ((0, jsx_runtime_1.jsx)("div", { style: { marginTop: 10, display: "flex", flexDirection: "column", gap: 10, maxHeight: 340, overflowY: "auto" }, children: msg.tripResults.map((trip, i) => ((0, jsx_runtime_1.jsxs)("div", { style: s.tripCard, children: [(0, jsx_runtime_1.jsxs)("div", { style: s.tripCardHeader, children: [(0, jsx_runtime_1.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: 8, color: "#fff" }, children: [(0, jsx_runtime_1.jsx)(icons_1.IconShip, { size: 16, color: "#fff" }), (0, jsx_runtime_1.jsx)("span", { style: { fontWeight: 600, fontSize: t.fontSize?.xs }, children: trip.shippingLine })] }), (0, jsx_runtime_1.jsx)("span", { style: { color: "rgba(255,255,255,0.8)", fontSize: "10px" }, children: trip.vesselName })] }), (0, jsx_runtime_1.jsxs)("div", { style: { padding: "14px 16px" }, children: [(0, jsx_runtime_1.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }, children: [(0, jsx_runtime_1.jsxs)("div", { style: { textAlign: "center" }, children: [(0, jsx_runtime_1.jsx)("div", { style: { fontSize: t.fontSize?.lg, fontWeight: 700, color: t.colors.botBubbleText }, children: formatTime(trip.departureTime) }), (0, jsx_runtime_1.jsx)("div", { style: { fontSize: "10px", color: t.colors.mutedText, marginTop: 2 }, children: trip.srcPort })] }), (0, jsx_runtime_1.jsxs)("div", { style: { flex: 1, margin: "0 14px", display: "flex", flexDirection: "column", alignItems: "center" }, children: [(0, jsx_runtime_1.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: 4, fontSize: "10px", color: t.colors.mutedText }, children: [(0, jsx_runtime_1.jsx)(icons_1.IconClock, { size: 12 }), " ", trip.duration] }), (0, jsx_runtime_1.jsxs)("div", { style: { width: "100%", display: "flex", alignItems: "center", gap: 4, marginTop: 4 }, children: [(0, jsx_runtime_1.jsx)("div", { style: { flex: 1, height: 2, background: t.colors.border, borderRadius: 1 } }), (0, jsx_runtime_1.jsx)(icons_1.IconArrowRight, { size: 12, color: t.colors.primary }), (0, jsx_runtime_1.jsx)("div", { style: { flex: 1, height: 2, background: t.colors.border, borderRadius: 1 } })] })] }), (0, jsx_runtime_1.jsxs)("div", { style: { textAlign: "center" }, children: [(0, jsx_runtime_1.jsx)("div", { style: { fontSize: t.fontSize?.lg, fontWeight: 700, color: t.colors.botBubbleText }, children: formatTime(trip.arrivalTime) }), (0, jsx_runtime_1.jsx)("div", { style: { fontSize: "10px", color: t.colors.mutedText, marginTop: 2 }, children: trip.destPort })] })] }), (0, jsx_runtime_1.jsxs)("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: 10, borderTop: `1px solid ${t.colors.border}` }, children: [(0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsx)("div", { style: { fontSize: "20px", fontWeight: 700, color: t.colors.primary }, children: formatPrice(trip.price) }), (0, jsx_runtime_1.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: 4, fontSize: "10px", color: t.colors.mutedText, marginTop: 2 }, children: [(0, jsx_runtime_1.jsx)(icons_1.IconUsers, { size: 12 }), " ", trip.availableSeats, " seats left"] })] }), (0, jsx_runtime_1.jsx)("button", { onClick: () => onTripSelect?.(trip), style: s.chooseTripBtn, children: "Choose Trip" })] })] })] }, trip.id || i))) })), msg.interactive?.type === "quick_reply" && (() => {
+                                                const opts = msg.interactive.data.options;
+                                                const useGrid = isPortGrid(opts);
+                                                return ((0, jsx_runtime_1.jsx)("div", { style: {
+                                                        marginTop: 10,
+                                                        display: useGrid ? "grid" : "flex",
+                                                        ...(useGrid
+                                                            ? { gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))", gap: 6 }
+                                                            : { flexWrap: "wrap", gap: 8 }),
+                                                        maxHeight: useGrid ? 180 : undefined,
+                                                        overflowY: useGrid ? "auto" : undefined,
+                                                        paddingRight: useGrid ? 4 : undefined,
+                                                    }, children: opts.map((opt) => ((0, jsx_runtime_1.jsx)("button", { onClick: () => handleQuickReply(opt.value, opt.label), style: useGrid ? s.portChip : s.quickReply, children: opt.label }, opt.value))) }));
+                                            })()] })] })) }, msg.id))), (isLoading || isSearching) && ((0, jsx_runtime_1.jsxs)("div", { style: { display: "flex", gap: 8, alignItems: "flex-start", animation: "hayahai-fadeIn .2s ease" }, children: [(0, jsx_runtime_1.jsx)("div", { style: s.botAvatar, children: (0, jsx_runtime_1.jsx)(icons_1.IconLoader, { size: 14, color: t.colors.primary }) }), (0, jsx_runtime_1.jsx)("div", { style: { ...s.botBubble, display: "flex", alignItems: "center", gap: 8 }, children: (0, jsx_runtime_1.jsx)("span", { style: { fontSize: t.fontSize?.xs, color: t.colors.mutedText }, children: isSearching ? "Searching trips..." : `${displayName} is thinking...` }) })] }))] }) }), showDatePicker && ((0, jsx_runtime_1.jsx)(DatePickerInline, { theme: t, onSelect: handleDateSelect, onClose: () => setShowDatePicker(false) })), (0, jsx_runtime_1.jsxs)("div", { style: s.inputArea, children: [(0, jsx_runtime_1.jsxs)("form", { onSubmit: handleSubmit, style: s.inputForm, children: [(0, jsx_runtime_1.jsx)("input", { ref: inputRef, value: input, onChange: (e) => setInput(e.target.value), placeholder: "Where do you want to go?", style: s.input, disabled: isLoading || isSearching }), (0, jsx_runtime_1.jsx)("button", { type: "submit", disabled: isLoading || isSearching || !input.trim(), style: { ...s.sendBtn, opacity: isLoading || isSearching || !input.trim() ? 0.4 : 1 }, children: (0, jsx_runtime_1.jsx)(icons_1.IconSend, { size: 14, color: "#fff" }) })] }), poweredByText && ((0, jsx_runtime_1.jsxs)("div", { style: s.poweredBy, children: [(0, jsx_runtime_1.jsx)(icons_1.IconSparkles, { size: 10 }), " ", (0, jsx_runtime_1.jsx)("span", { children: poweredByText })] }))] })] }));
 }
 // ─── Inline Date Picker ──────────────────────────────────────────────────────
 function DatePickerInline({ theme: t, onSelect, onClose }) {
@@ -483,94 +503,119 @@ function DatePickerInline({ theme: t, onSelect, onClose }) {
 function buildStyles(t) {
     const base = {
         container: {
-            background: "rgba(255,255,255,0.7)", backdropFilter: "blur(12px)",
-            borderRadius: 12, boxShadow: "0 10px 40px rgba(0,0,0,.12)",
+            background: "#fff", backdropFilter: "blur(16px)",
+            borderRadius: 16, boxShadow: "0 12px 48px rgba(0,0,0,.10), 0 2px 8px rgba(0,0,0,.06)",
             overflow: "hidden", position: "relative", width: "100%",
         },
         header: {
             display: "flex", alignItems: "center", justifyContent: "space-between",
-            background: `linear-gradient(135deg, ${t.colors.headerBg}, #2a4a5b)`,
-            padding: "12px 16px",
+            background: `linear-gradient(135deg, ${t.colors.headerBg} 0%, ${t.colors.headerBg}dd 100%)`,
+            padding: "14px 18px",
         },
         headerIcon: {
-            width: 32, height: 32, borderRadius: "50%",
-            background: "rgba(255,255,255,0.1)",
+            width: 36, height: 36, borderRadius: "50%",
+            background: "rgba(255,255,255,0.15)", backdropFilter: "blur(4px)",
             display: "flex", alignItems: "center", justifyContent: "center",
+            flexShrink: 0,
         },
         formToggle: {
             display: "flex", alignItems: "center", gap: 6,
-            borderRadius: 9999, background: "rgba(255,255,255,0.1)",
-            padding: "6px 12px", fontSize: t.fontSize?.xs, color: "#fff",
-            border: "none", cursor: "pointer",
-        },
-        messagesArea: {
-            height: 320, overflowY: "auto",
-            background: "transparent", padding: 12,
-            scrollBehavior: "smooth",
-        },
-        userBubble: {
-            marginLeft: "auto", maxWidth: "85%",
-            borderRadius: `${t.borderRadius.bubble} ${t.borderRadius.bubble} 4px ${t.borderRadius.bubble}`,
-            padding: "8px 12px", fontSize: t.fontSize?.xs,
-            background: t.colors.userBubble, color: t.colors.userBubbleText,
-            boxShadow: "0 1px 2px rgba(0,0,0,.05)",
-        },
-        botBubble: {
-            maxWidth: "85%",
-            borderRadius: `${t.borderRadius.bubble} ${t.borderRadius.bubble} ${t.borderRadius.bubble} 4px`,
-            padding: "8px 12px", fontSize: t.fontSize?.xs,
-            background: t.colors.botBubble, color: t.colors.botBubbleText,
-            border: `1px solid ${t.colors.botBubbleBorder}`,
-            boxShadow: "0 1px 2px rgba(0,0,0,.05)",
-        },
-        quickReply: {
-            padding: "6px 12px", borderRadius: 9999,
-            border: `1px solid ${t.colors.quickReplyBorder}`,
-            background: t.colors.quickReplyBg, color: t.colors.quickReplyText,
-            fontSize: t.fontSize?.xs, fontWeight: 500, cursor: "pointer",
+            borderRadius: 9999, background: "rgba(255,255,255,0.15)",
+            padding: "6px 14px", fontSize: t.fontSize?.xs, color: "#fff",
+            border: "1px solid rgba(255,255,255,0.2)", cursor: "pointer",
             transition: "all .15s", fontFamily: "inherit",
         },
+        messagesArea: {
+            height: 340, overflowY: "auto",
+            background: `linear-gradient(180deg, ${t.colors.background} 0%, #fafbfc 100%)`,
+            padding: "16px 14px",
+            scrollBehavior: "smooth",
+        },
+        botAvatar: {
+            width: 28, height: 28, borderRadius: "50%", flexShrink: 0,
+            background: `${t.colors.primary}12`,
+            border: `1.5px solid ${t.colors.primary}30`,
+            display: "flex", alignItems: "center", justifyContent: "center",
+            marginTop: 18,
+        },
+        userBubble: {
+            maxWidth: "80%",
+            borderRadius: "18px 18px 4px 18px",
+            padding: "10px 14px", fontSize: t.fontSize?.xs,
+            background: `linear-gradient(135deg, ${t.colors.userBubble}, ${t.colors.userBubble}e8)`,
+            color: t.colors.userBubbleText,
+            boxShadow: "0 2px 8px rgba(0,0,0,.08)",
+        },
+        botBubble: {
+            maxWidth: "100%",
+            borderRadius: "4px 18px 18px 18px",
+            padding: "10px 14px", fontSize: t.fontSize?.xs,
+            background: t.colors.botBubble, color: t.colors.botBubbleText,
+            border: `1px solid ${t.colors.botBubbleBorder}`,
+            boxShadow: "0 1px 4px rgba(0,0,0,.04)",
+        },
+        quickReply: {
+            padding: "8px 16px", borderRadius: 9999,
+            border: `1.5px solid ${t.colors.quickReplyBorder}`,
+            background: t.colors.quickReplyBg, color: t.colors.quickReplyText,
+            fontSize: t.fontSize?.xs, fontWeight: 600, cursor: "pointer",
+            transition: "all .2s ease", fontFamily: "inherit",
+            boxShadow: "0 1px 3px rgba(0,0,0,.04)",
+        },
+        portChip: {
+            padding: "7px 10px", borderRadius: 10,
+            border: `1.5px solid ${t.colors.quickReplyBorder}`,
+            background: t.colors.quickReplyBg, color: t.colors.quickReplyText,
+            fontSize: "11px", fontWeight: 500, cursor: "pointer",
+            transition: "all .2s ease", fontFamily: "inherit",
+            textAlign: "center", whiteSpace: "nowrap",
+            overflow: "hidden", textOverflow: "ellipsis",
+        },
         tripCard: {
-            background: "#fff", borderRadius: 12,
+            background: "#fff", borderRadius: 14,
             border: `1px solid ${t.colors.border}`,
-            boxShadow: "0 1px 3px rgba(0,0,0,.08)", overflow: "hidden",
+            boxShadow: "0 2px 8px rgba(0,0,0,.06)", overflow: "hidden",
         },
         tripCardHeader: {
             background: `linear-gradient(135deg, ${t.colors.primary}, ${t.colors.primaryHover})`,
-            padding: "8px 12px",
+            padding: "10px 14px",
             display: "flex", alignItems: "center", justifyContent: "space-between",
         },
         chooseTripBtn: {
-            padding: "8px 16px",
+            padding: "9px 18px",
             background: "linear-gradient(135deg, #22c55e, #059669)",
             color: "#fff", fontSize: t.fontSize?.xs, fontWeight: 600,
-            borderRadius: 8, border: "none", cursor: "pointer",
-            boxShadow: "0 1px 3px rgba(0,0,0,.1)",
+            borderRadius: 10, border: "none", cursor: "pointer",
+            boxShadow: "0 2px 6px rgba(34,197,94,.25)",
+            transition: "all .15s ease", fontFamily: "inherit",
         },
         inputArea: {
             borderTop: `1px solid ${t.colors.border}`,
-            background: "#fff", padding: 12,
+            background: "#fff", padding: "12px 14px",
         },
         inputForm: {
             display: "flex", alignItems: "center", gap: 8,
             borderRadius: t.borderRadius.input,
-            border: `1px solid ${t.colors.inputBorder}`,
-            background: t.colors.inputBg, padding: "4px 12px",
+            border: `1.5px solid ${t.colors.inputBorder}`,
+            background: t.colors.inputBg, padding: "5px 12px",
+            transition: "border-color .2s ease",
         },
         input: {
             flex: 1, background: "transparent", border: "none", outline: "none",
-            padding: "4px 8px", fontSize: t.fontSize?.xs,
+            padding: "5px 8px", fontSize: t.fontSize?.xs,
             color: t.colors.inputText, fontFamily: "inherit",
         },
         sendBtn: {
-            width: 28, height: 28, borderRadius: "50%",
-            background: t.colors.primary, border: "none", cursor: "pointer",
+            width: 30, height: 30, borderRadius: "50%",
+            background: `linear-gradient(135deg, ${t.colors.primary}, ${t.colors.primaryHover})`,
+            border: "none", cursor: "pointer",
             display: "flex", alignItems: "center", justifyContent: "center",
-            transition: "opacity .15s",
+            transition: "all .15s ease", flexShrink: 0,
+            boxShadow: `0 2px 6px ${t.colors.primary}40`,
         },
         poweredBy: {
-            marginTop: 6, display: "flex", justifyContent: "center",
-            alignItems: "center", gap: 4, opacity: 0.5,
+            marginTop: 8, display: "flex", justifyContent: "center",
+            alignItems: "center", gap: 4, opacity: 0.4,
             fontSize: "9px", fontWeight: 500, color: t.colors.mutedText,
         },
     };

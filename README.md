@@ -5,16 +5,16 @@ Unified SDK for AI-powered chatbot and trip search widgets. Includes customizabl
 ## Installation
 
 ```bash
-pnpm add @ayahay/hayahai-sdk
+pnpm add @oltek/hayahai-sdk
 ```
 
 ## Entry Points
 
 | Import | Description |
 |---|---|
-| `@ayahay/hayahai-sdk` | Types, API client, theme utilities |
-| `@ayahay/hayahai-sdk/react` | React UI components (ChatWidget, TripSearchWidget) |
-| `@ayahay/hayahai-sdk/server` | Server-side RAG, vectorstore, tools, training |
+| `@oltek/hayahai-sdk` | Types, API client, theme utilities |
+| `@oltek/hayahai-sdk/react` | React UI components (ChatWidget, TripSearchWidget) |
+| `@oltek/hayahai-sdk/server` | Server-side RAG, vectorstore, tools, training |
 
 ---
 
@@ -23,7 +23,7 @@ pnpm add @ayahay/hayahai-sdk
 ### ChatWidget — Floating AI Chatbot
 
 ```tsx
-import { ChatWidget } from "@ayahay/hayahai-sdk/react";
+import { ChatWidget } from "@oltek/hayahai-sdk/react";
 
 export default function App() {
   return (
@@ -66,7 +66,7 @@ export default function App() {
 ### TripSearchWidget — Guided Trip Search
 
 ```tsx
-import { TripSearchWidget } from "@ayahay/hayahai-sdk/react";
+import { TripSearchWidget } from "@oltek/hayahai-sdk/react";
 
 export default function SearchSection() {
   return (
@@ -113,7 +113,7 @@ export default function SearchSection() {
 All components accept a `theme` prop with deep-partial overrides:
 
 ```tsx
-import { defaultTheme } from "@ayahay/hayahai-sdk/react";
+import { defaultTheme } from "@oltek/hayahai-sdk/react";
 
 const customTheme = {
   colors: {
@@ -160,7 +160,7 @@ interface HayahAITheme {
 ## API Client
 
 ```typescript
-import { HayahAIClient } from "@ayahay/hayahai-sdk";
+import { HayahAIClient } from "@oltek/hayahai-sdk";
 
 const client = new HayahAIClient({
   baseUrl: "https://api.example.com",
@@ -197,7 +197,7 @@ import {
   queryAgentWithTools,
   trainAgent,
   createSearchTripsTool,
-} from "@ayahay/hayahai-sdk/server";
+} from "@oltek/hayahai-sdk/server";
 
 // Query with tools
 const answer = await queryAgentWithTools("Miguel", "Show trips from Cebu", {
@@ -219,4 +219,4 @@ The React components use **inline styles** and **built-in SVG icons** — no Tai
 
 ## License
 
-MIT — Ayahay Team
+MIT — Oltek Solutions
